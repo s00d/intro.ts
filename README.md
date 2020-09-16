@@ -179,4 +179,4 @@ hideHint(stepId: number) -  hide hint by step number
 
 ## Bugs
 
-If you have any problems, please create Issues [here](https://github.com/s00d/intro-ts/issues)   
+If you have any problems, please create Issues [here](https://github.com/s00d/intro.ts/issues)   
