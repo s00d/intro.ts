@@ -4,7 +4,7 @@
 
 Step-by-step guide and feature introduction
 
-![npm version](https://raw.githubusercontent.com/s00d/intro.ts/master/example/image.png)
+![npm version](https://s00d.github.io/intro.ts/example/image.png)
 
 ## Advantages
 
@@ -14,9 +14,7 @@ Works easier and faster than the original, completely written in ts
 
 # Examples
   
-[[hello-wirld](https://raw.githubusercontent.com/s00d/intro.ts/example/hello-world/index.html)]
-
-[[multi-page](https://raw.githubusercontent.com/s00d/intro.ts/example/multi-page/index.html)]
+[[show](https://s00d.github.io/intro.ts/example/index.html)]
 
 ## Installation
 
