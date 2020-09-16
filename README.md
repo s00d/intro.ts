@@ -81,14 +81,23 @@ event - all events
 all methods are described in ts
 
 setOption(option: string, value: string) - set option
+
 setOptions(options: Options) - set options, see Options type
+
 refresh() - program refresh
+
 start(step?:null|number) - show guide, you can pass a step to run
+
 getStep() - get the current step number
-addStep(element: HTMLElement|string, intro: string, step: number = 1, position = 'right') - add step programmatically
+
+addStep(element: HTMLElement|string, intro: string, step: number = 1, position = 'right') - add a step programmatically
+
 addSteps(data: Array<{element: HTMLElement, intro: string, position:string}>) -  add multiple steps programmatically
+
 next(step?: number|null) - programmatically switch step
+
 previous(step?: number|null) - programmatically switch step
+
 stop() - programmatically stop guide
 
 ## Bugs
