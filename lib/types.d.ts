@@ -40,7 +40,7 @@ export declare type Options = {
     positionPrecedence: Array<"bottom" | "top" | "right" | "left">;
     /** Set how much padding to be used around helper element */
     helperElementPadding: number;
-    /** Default hint position */
+    /** additional buttons */
     additionalButtons: Array<{
         name: string;
         label: string;
