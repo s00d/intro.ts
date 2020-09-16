@@ -107,7 +107,6 @@ export class Block {
   }
 
   setHighlightClass(highlightClass: string) {
-    console.log(this.helper);
     this.helper.className = highlightClass;
   }
 
