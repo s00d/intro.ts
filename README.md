@@ -58,6 +58,15 @@ npm install intro-ts
 </script>
 ```
 
+## CDN
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/intro-ts/lib/style.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/intro.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/hints.js"></script>
+
+```
+
 ## Options
 
 ```js
