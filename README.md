@@ -148,7 +148,7 @@ previous(step?: number|null) - programmatically switch step
 
 stop() - programmatically stop guide
 
-## HISTS
+## HINTS
 
 ```js
     require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
