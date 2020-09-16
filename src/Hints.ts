@@ -32,7 +32,44 @@ export class Hints extends EventEmitter {
     this.dispatch('enable-hints')
   }
 
-  showHint(element: HTMLElement, stepId: number) {
+  hideHints() {
+    for(let stepId in this.hints) {
+      this.hideHint(parseInt(stepId))
+    }
+    if(this.hintsWrapper) {
+      this.hintsWrapper.remove();
+    }
+    this.target.querySelectorAll('.introts-hintReference').forEach((item) => {
+      item.remove()
+    });
+    this.target.querySelectorAll('.introts-hints').forEach((item) => {
+      item.remove()
+    })
+    this.hints = {};
+
+    this.dispatch('hide-hints')
+  }
+
+  hideHint(stepId: number) {
+    if(this.hints[stepId]) {
+      this.hints[stepId].parentElement!.removeChild(this.hints[stepId])
+      delete this.hints[stepId];
+    }
+    this.target.querySelectorAll('.introts-tooltip').forEach((item) => {
+      item.remove()
+    });
+    this.target.querySelectorAll('.intro-show').forEach((item) => {
+      item.classList.remove('intro-show')
+    })
+
+    if(Object.keys(this.hints).length === 0) {
+      this.hideHints();
+    }
+
+    this.dispatch('hide-hint', {stepId: stepId})
+  }
+
+  protected showHint(element: HTMLElement, stepId: number) {
     this.hints[stepId] = document.createElement('a');
     this.hints[stepId].setAttribute('role', 'button');
     this.hints[stepId].tabIndex = stepId;
@@ -75,43 +112,6 @@ export class Hints extends EventEmitter {
     alignHintPosition((element.dataset.hintPosition??'middle-right'), this.hints[stepId], element);
 
     this.hintsWrapper.appendChild(this.hints[stepId])
-  }
-
-  hideHints() {
-    for(let stepId in this.hints) {
-      this.hideHint(parseInt(stepId))
-    }
-    if(this.hintsWrapper) {
-      this.hintsWrapper.remove();
-    }
-    this.target.querySelectorAll('.introts-hintReference').forEach((item) => {
-      item.remove()
-    });
-    this.target.querySelectorAll('.introts-hints').forEach((item) => {
-      item.remove()
-    })
-    this.hints = {};
-
-    this.dispatch('hide-hints')
-  }
-
-  hideHint(stepId: number) {
-    if(this.hints[stepId]) {
-      this.hints[stepId].parentElement!.removeChild(this.hints[stepId])
-      delete this.hints[stepId];
-    }
-    this.target.querySelectorAll('.introts-tooltip').forEach((item) => {
-      item.remove()
-    });
-    this.target.querySelectorAll('.intro-show').forEach((item) => {
-      item.classList.remove('intro-show')
-    })
-
-    if(Object.keys(this.hints).length === 0) {
-      this.hideHints();
-    }
-
-    this.dispatch('hide-hint', {stepId: stepId})
   }
 
   protected removeHintDialog() {

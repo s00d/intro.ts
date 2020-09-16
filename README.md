@@ -58,6 +58,56 @@ npm install intro-ts
 </script>
 ```
 
+## Options
+
+```js
+  /** Next button label in tooltip box */
+  nextLabel: string,
+  /** Previous button label in tooltip box */
+  prevLabel: string,
+  /** Skip button label in tooltip box */
+  skipLabel: string,
+  /** Done button label in tooltip box */
+  doneLabel: string|null,
+
+  /** Default tooltip box position */
+  tooltipPosition: 'bottom'|'top'|'floating',
+
+  /** Hide previous button in the first step? Otherwise, it will be disabled button. */
+  hidePrev: boolean,
+  /** Hide next button in the last step? Otherwise, it will be disabled button. */
+  hideNext: boolean,
+
+  /** CSS class that is added to the helperLayer */
+  highlight: boolean,
+  /** Close introduction when pressing Escape button? */
+  exitOnEsc: boolean,
+  /** Close introduction when clicking on overlay layer? */
+  exitOnOverlayClick: boolean,
+  /** Show step numbers in introduction? */
+  showStepNumbers: boolean,
+  /** Let user use keyboard to navigate the tour? */
+  keyboardNavigation: boolean,
+  /** Show tour control buttons? */
+  showButtons: boolean,
+  /** Show tour bullets? */
+  showBullets: boolean,
+  /** Show tour progress? */
+  showProgress: boolean,
+  /** Scroll to highlighted element? */
+  scrollToElement: boolean,
+
+  /** Set the overlay opacity */
+  overlayOpacity: number,
+  /** Precedence of positions, when auto is enabled */
+  positionPrecedence: Array<"bottom"|"top"|"right"|"left">,
+
+  /** Set how much padding to be used around helper element */
+  helperElementPadding: number,
+  /** additional buttons, see examples */
+  additionalButtons: Array<{name: string, label: string, className: string, callback: () => void}>
+```
+
 ## Events
 
 init - Block with guide created
@@ -97,6 +147,35 @@ next(step?: number|null) - programmatically switch step
 previous(step?: number|null) - programmatically switch step
 
 stop() - programmatically stop guide
+
+## HISTS
+
+```js
+    require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
+    const intro = require('intro-ts');
+    const intro = require('intro-ts/src/Hints.ts'); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
+    intro.setOptions({
+      additionalButtons: {
+        name: 'hints', label: 'HINTS', className: 'introts-button', callback: function () {
+          intro.stop()
+          hints.enableHints()
+        }
+      },
+    });
+    intro.addEventListener('start', (data) => {
+      hints.hideHints();
+    })
+    intro.addEventListener('next', (data) => {
+      console.log(data);
+    })
+    intro.start();
+```
+
+enableHints() - show hints 
+
+hideHints() - hide hints
+
+hideHint(stepId: number) -  hide hint by step number
 
 ## Bugs
 
