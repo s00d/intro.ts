@@ -8,7 +8,7 @@ Step-by-step guide and feature introduction
 
 ## Advantages
 
-Fast, Easy, Typescript, no virtual dom, Events
+Fast, Easy, Typescript, not use virtual dom, Events
 
 Works easier and faster than the original, completely written in ts
 
