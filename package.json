@@ -1,11 +1,11 @@
 {
   "name": "intro-ts",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Better introductions for websites and features with a step-by-step guide for your projects",
   "main": "lib/Intro.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "lib", "src"
   ],
   "scripts": {
     "start": "cross-env NODE_ENV=production node_modules/.bin/webpack-cli --config webpack.config.ts  -p --hide-modules --mode production",
