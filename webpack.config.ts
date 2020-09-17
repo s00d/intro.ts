@@ -79,7 +79,8 @@ const config: webpack.Configuration = {
   },
   entry: {
     intro: path.resolve(__dirname, "src/Intro.ts"),
-    hints: path.resolve(__dirname, "src/hints.ts")
+    hints: path.resolve(__dirname, "src/Hints.ts"),
+    plugin_vue: path.resolve(__dirname, "src/plugin_vue.ts")
   },
   output: {
     path: path.resolve(__dirname, "./lib"),

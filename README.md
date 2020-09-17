@@ -203,6 +203,48 @@ hideHints() - hide hints
 
 hideHint(stepId: number) -  hide hint by step number
 
+## PLUGINS
+
+### VUE
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./plugin_vue.js"></script> 
+<!--or let introPlugin = require('intro-ts/src/plugin_vue.ts')-->
+...
+<div class="container-narrow" id="index">
+  <div class="masthead" v-intro="{intro: 'Get it, use it.', step: 1, interaction: 'no', position: 'right', hint: 'test'}" >
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    Vue.use(window.introPlugin);
+    // or Vue.use(introPlugin);
+    new Vue({
+      el: '#index',
+      methods: {
+        start() {
+          this.$intro.setOptions({
+            additionalButtons: {
+              name: 'hints', label: 'HINTS', className: 'introts-button', callback: function () {
+                this.$intro.stop()
+                this.$hints.enableHints()
+              }
+            },
+          });
+          this.$intro.addEventListener('start', (data) => {
+            this.$hints.hideHints();
+          })
+          this.$intro.start();
+        },
+      }
+    })
+  }
+
+</script>
+```
+
 ## Bugs
 
 If you have any problems, please create Issues [here](https://github.com/s00d/intro.ts/issues)   
