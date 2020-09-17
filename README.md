@@ -32,28 +32,28 @@ npm install intro-ts
 ```
 
 ```js
-    require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
-    const intro = require('intro-ts');
-    intro.setOptions({
-      additionalButtons: {
-        name: 'test', label: 'test', className: 'introts-button', callback: function () {
-          intro.stop()
-        }
-      },
-    });
-    intro.addEventListener('start', (data) => {
-      console.log('start');
-    })
-    intro.addEventListener('next', (data) => {
-      console.log(data);
-    })
-    intro.start();
+require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
+const intro = require('intro-ts');
+intro.setOptions({
+  additionalButtons: {
+    name: 'test', label: 'test', className: 'introts-button', callback: function () {
+      intro.stop()
+    }
+  },
+});
+intro.addEventListener('start', (data) => {
+  console.log('start');
+})
+intro.addEventListener('next', (data) => {
+  console.log(data);
+})
+intro.start();
 
 ```
 
 ### intro attributes
 
-| Name             | Required  | Default | description |
+| Name             | Required  | Default | Description |
 |------------------|-----------|---------|-------------|
 | data-intro       | yes       |         | The tooltip text of step |
 | data-step        | yes       |         | Define the number (priority) of step |
@@ -135,67 +135,63 @@ npm install intro-ts
 
 ## Events
 
-init - Block with guide created
+| Name     | Description              |
+|----------|--------------------------|
+| init     | Block with guide created |
+| start    | launch guide             |
+| finish   | close guide              |
+| previous | previous step            |
+| next     | next step                |
+| stop     | stop click               |
+| event    | all events               |
 
-start - launch guide 
-
-finish - close guide
-
-previous - previous step
-
-next - next step
-
-stop - stop click
-
-event - all events
+```js
+intro.addEventListener('start', (data) => {
+  console.log('start');
+})
+```
 
 ### Methods
 
 all methods are described in ts
 
-setOption(option: string, value: string) - set option
-
-setOptions(options: Options) - set options, see Options type
-
-refresh() - program refresh
-
-start(step?:null|number) - show guide, you can pass a step to run
-
+```ts
+setOption(option: string, value: string) // set option
+setOptions(options: Options) // set options, see Options type
+refresh() // program refresh
+start(step?:null|number) // show guide, you can pass a step to run
 getStep() - get the current step number
+addStep(element: HTMLElement|string, intro: string, step: number = 1, position = 'right') // add a step programmatically
+addSteps(data: Array<{element: HTMLElement, intro: string, position:string}>) //  add multiple steps programmatically
+next(step?: number|null) // programmatically switch step
+previous(step?: number|null) // programmatically switch step
+stop() // programmatically stop guide
+```
 
-addStep(element: HTMLElement|string, intro: string, step: number = 1, position = 'right') - add a step programmatically
-
-addSteps(data: Array<{element: HTMLElement, intro: string, position:string}>) -  add multiple steps programmatically
-
-next(step?: number|null) - programmatically switch step
-
-previous(step?: number|null) - programmatically switch step
-
-stop() - programmatically stop guide
 
 ## HINTS
 ```html
 <div class="span6" data-hint='test'>data</div>
 ```
 ```js
-    require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
-    const intro = require('intro-ts');
-    const intro = require('intro-ts/src/Hints.ts'); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
-    intro.setOptions({
-      additionalButtons: {
-        name: 'hints', label: 'HINTS', className: 'introts-button', callback: function () {
-          intro.stop()
-          hints.enableHints()
-        }
-      },
-    });
-    intro.addEventListener('start', (data) => {
-      hints.hideHints();
-    })
-    intro.addEventListener('next', (data) => {
-      console.log(data);
-    })
-    intro.start();
+require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
+const intro = require('intro-ts');
+const intro = require('intro-ts/src/Hints.ts'); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
+intro.setOptions({
+  additionalButtons: {
+    name: 'hints', label: 'HINTS', className: 'introts-button', callback: function () {
+      intro.stop()
+      hints.enableHints()
+    }
+  },
+});
+intro.addEventListener('start', (data) => {
+  hints.hideHints();
+})
+intro.addEventListener('next', (data) => {
+  console.log(data);
+})
+intro.start();
 ```
 
 enableHints() - show hints 
