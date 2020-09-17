@@ -8,10 +8,14 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "target": "es5"
+    "module": "commonjs",
+    "target": "es5",
+    "removeComments": true,
+    "sourceMap": true
   },
+  "include": ["src/**/*.ts"],
   "files": [
-    "src/Intro.ts",
-    "src/Hints.ts"
-  ]
+    "src/index.ts"
+  ],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

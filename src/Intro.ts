@@ -3,7 +3,7 @@ import { mergeOptions } from "./helpers";
 import { Block } from "./Block";
 import {EventEmitter} from "./EventEmitter";
 
-export class IntroTS extends EventEmitter {
+class IntroTS extends EventEmitter {
   private _options: Options;
   private _steps: Array<number> = [];
   private _activeStep: number|null = null;
@@ -222,6 +222,7 @@ export class IntroTS extends EventEmitter {
 }
 
 export default IntroTS
+export { IntroTS }
 
 try {
   window.IntroTS = IntroTS;

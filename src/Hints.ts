@@ -1,7 +1,7 @@
 import {_getOffset, _isFixed, _setHelperLayerPosition, alignHintPosition} from "./helpers";
 import {EventEmitter} from "./EventEmitter";
 
-export class Hints extends EventEmitter {
+class Hints extends EventEmitter {
   private hints: { [stepId: number]: HTMLElement };
   private hintsWrapper: HTMLElement;
   private _hintClickCallback: (hintElement: HTMLElement, item: HTMLElement, stepId: number) => void;
@@ -158,6 +158,7 @@ export class Hints extends EventEmitter {
 }
 
 export default Hints
+export { Hints }
 
 try {
   window.Hints = Hints;

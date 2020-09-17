@@ -1,6 +1,6 @@
 import { Options } from "./types";
 import { EventEmitter } from "./EventEmitter";
-export declare class IntroTS extends EventEmitter {
+declare class IntroTS extends EventEmitter {
     private _options;
     private _steps;
     private _activeStep;
@@ -27,3 +27,4 @@ export declare class IntroTS extends EventEmitter {
     protected createElement(targetElement: HTMLElement): boolean;
 }
 export default IntroTS;
+export { IntroTS };

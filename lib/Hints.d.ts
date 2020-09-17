@@ -1,5 +1,5 @@
 import { EventEmitter } from "./EventEmitter";
-export declare class Hints extends EventEmitter {
+declare class Hints extends EventEmitter {
     private hints;
     private hintsWrapper;
     private _hintClickCallback;
@@ -15,3 +15,4 @@ export declare class Hints extends EventEmitter {
     protected showHintDialog(element: HTMLElement, text: string, stepId: number): void;
 }
 export default Hints;
+export { Hints };

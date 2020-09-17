@@ -26,7 +26,7 @@ declare global {
     }
 }
 
-const introPlugin = {
+const introVuePlugin = {
     install(Vue: typeof _Vue) {
         Vue.directive('intro', {
             bind (el:HTMLElement, binding: DirectiveBinding) {
@@ -45,8 +45,9 @@ const introPlugin = {
     }
 };
 
-export default introPlugin
+export default introVuePlugin
+export { introVuePlugin }
 
 try {
-    window.introPlugin = introPlugin;
+    window.introPlugin = introVuePlugin;
 } catch(err) {}

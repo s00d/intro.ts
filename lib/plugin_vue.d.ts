@@ -20,7 +20,8 @@ declare global {
         introPlugin: PluginObject;
     }
 }
-declare const introPlugin: {
+declare const introVuePlugin: {
     install(Vue: typeof _Vue): void;
 };
-export default introPlugin;
+export default introVuePlugin;
+export { introVuePlugin };

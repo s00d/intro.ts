@@ -32,8 +32,8 @@ npm install intro-ts
 ```
 
 ```js
-require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
-const IntroTS = require('intro-ts');
+require('intro-ts/src/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+const { IntroTS } = require('intro-ts');
 const intro = new IntroTS();
 intro.setOptions({
   additionalButtons: {
@@ -65,8 +65,8 @@ intro.start();
 ### how to use in the browser?
 
 ```html
-<link href="./lib/style.min.css" rel="stylesheet">
-<script type="text/javascript" src="./lib/intro.js"></script>
+<link href="./lib/bandle/style.min.css" rel="stylesheet">
+<script type="text/javascript" src="./lib/bandle/intro.js"></script>
 <script>
   function start() {
     var intro = new window.IntroTS();
@@ -78,9 +78,9 @@ intro.start();
 ## CDN
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/intro-ts/lib/style.min.css" rel="stylesheet">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/intro.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/hints.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/style.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/intro.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/hints.js"></script>
 
 ```
 
@@ -175,9 +175,9 @@ stop() // programmatically stop guide
 <div class="span6" data-hint='test'>data</div>
 ```
 ```js
-require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
-const IntroTS = require('intro-ts');
-const Hints = require('intro-ts/src/Hints.ts');
+require('intro-ts/src/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+const { IntroTS } = require('intro-ts');
+const { Hints } = require('intro-ts/src/Hints.ts');
 var intro = new IntroTS();
 var hints = new Hints(); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
 intro.setOptions({
@@ -209,8 +209,8 @@ hideHint(stepId: number) -  hide hint by step number
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="./plugin_vue.js"></script> 
-<!--or let introPlugin = require('intro-ts/src/plugin_vue.ts')-->
+<script src="./bandle/plugin_vue.js"></script> 
+<!--or let { introVuePlugin } = require('intro-ts')-->
 ...
 <div class="container-narrow" id="index">
   <div class="masthead" v-intro="{intro: 'Get it, use it.', step: 1, interaction: 'no', position: 'right', hint: 'test'}" >
@@ -220,7 +220,7 @@ hideHint(stepId: number) -  hide hint by step number
 <script>
   window.onload = function () {
     Vue.use(window.introPlugin);
-    // or Vue.use(introPlugin);
+    // or Vue.use(introVuePlugin);
     new Vue({
       el: '#index',
       methods: {
