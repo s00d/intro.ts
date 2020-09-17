@@ -56,7 +56,7 @@ intro.start();
 | Name             | Required  | Default | Description |
 |------------------|-----------|---------|-------------|
 | data-intro       | yes       |         | The tooltip text of step |
-| data-step        | yes       |         | Define the number (priority) of step |
+| data-step        | no        |         | Optionally define the number (priority) of step |
 | data-position    | no        | right   | Optionally define the position of tooltip, top, left, right, bottom, bottom-left-aligned (same as bottom), bottom-middle-aligned, bottom-right-aligned or auto (to detect the position of element and assign the correct position automatically). Default is bottom |
 | data-interaction | no        | no      | Optionally To disable interactions with elements inside the highlighted box, yes or no. |
 | data-scroll-to   | no        |         | Optionally define the element to scroll to querySelector. |

@@ -45,8 +45,9 @@ export class IntroTS extends EventEmitter {
   start(step:number|null = null) {
     this._steps = [];
     const elements = this._target.querySelectorAll("*[data-intro]");
-    elements.forEach((el: HTMLElement) => {
-      this._steps.push(parseInt(<string>el.getAttribute('data-step'), 10));
+    elements.forEach((el: HTMLElement, key: number) => {
+      if(!el.dataset.step) el.dataset.step = (key-1).toString();
+      this._steps.push(parseInt(<string>el.dataset.step, 10));
     })
     this._steps.sort();
 
