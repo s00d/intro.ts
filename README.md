@@ -33,7 +33,8 @@ npm install intro-ts
 
 ```js
 require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
-const intro = require('intro-ts');
+const IntroTS = require('intro-ts');
+const intro = new IntroTS();
 intro.setOptions({
   additionalButtons: {
     name: 'test', label: 'test', className: 'introts-button', callback: function () {
@@ -175,8 +176,10 @@ stop() // programmatically stop guide
 ```
 ```js
 require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
-const intro = require('intro-ts');
-const intro = require('intro-ts/src/Hints.ts'); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
+const IntroTS = require('intro-ts');
+const Hints = require('intro-ts/src/Hints.ts');
+var intro = new IntroTS();
+var hints = new Hints(); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
 intro.setOptions({
   additionalButtons: {
     name: 'hints', label: 'HINTS', className: 'introts-button', callback: function () {
