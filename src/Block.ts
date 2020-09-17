@@ -106,8 +106,13 @@ export class Block {
     this.helperNumberLayer.dataset.activeStep = step.toString();
   }
 
-  setHighlightClass(highlightClass: string) {
-    this.helper.className = highlightClass;
+  addHelperClass(highlightClass: string) {
+    if(this.helper.classList.contains(highlightClass)) return;
+    this.helper.classList.add(highlightClass);
+  }
+
+  removeHelperClass(highlightClass: string) {
+    this.helper.classList.remove(highlightClass);
   }
 
   setShowButtons() {

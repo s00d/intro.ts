@@ -25,7 +25,8 @@ export declare class Block {
     removeButtonClass(button: string, className: string): void;
     disable(): void;
     setProgress(progress?: number, step?: number): void;
-    setHighlightClass(highlightClass: string): void;
+    addHelperClass(highlightClass: string): void;
+    removeHelperClass(highlightClass: string): void;
     setShowButtons(): void;
     setShowProgress(): void;
     setText(text: string): void;

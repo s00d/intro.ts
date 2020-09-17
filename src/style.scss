@@ -40,8 +40,8 @@ tr.introts-showElement > th {
   z-index: 99999999 !important;
   position: absolute;
   background-color: white;
-  opacity: 0;
-  filter: alpha(opacity=0);
+  opacity: 0.2;
+  filter: alpha(opacity=0.2);
 }
 
 .introts-relativePosition,

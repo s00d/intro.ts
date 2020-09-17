@@ -24,6 +24,12 @@ npm install intro-ts
 ```
 
 ## Usage
+```html
+<a href="http://example.com/" data-intro="Hello step one!" data-step="1"></a>
+<div class="span6" data-step="2" data-intro="Ok, wasn't that fun?" data-interaction="no" data-position='right' data-scrollTo='tooltip'>
+  data
+</div>
+```
 
 ```js
     require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
@@ -44,6 +50,16 @@ npm install intro-ts
     intro.start();
 
 ```
+
+### intro attributes
+
+| Name             | Required  | Default | description |
+|------------------|-----------|---------|-------------|
+| data-intro       | yes       |         | The tooltip text of step |
+| data-step        | yes       |         | Define the number (priority) of step |
+| data-position    | no        | right   | Optionally define the position of tooltip, top, left, right, bottom, bottom-left-aligned (same as bottom), bottom-middle-aligned, bottom-right-aligned or auto (to detect the position of element and assign the correct position automatically). Default is bottom |
+| data-interaction | no        | no      | Optionally To disable interactions with elements inside the highlighted box, yes or no. |
+| data-scroll-to   | no        |         | Optionally define the element to scroll to querySelector. |
 
 ### how to use in the browser?
 
@@ -158,7 +174,9 @@ previous(step?: number|null) - programmatically switch step
 stop() - programmatically stop guide
 
 ## HINTS
-
+```html
+<div class="span6" data-hint='test'>data</div>
+```
 ```js
     require('intro-ts/src/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
     const intro = require('intro-ts');

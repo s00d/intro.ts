@@ -107,7 +107,7 @@ export class IntroTS extends EventEmitter {
       this.stop()
       return;
     }
-    const element = this._target.querySelector(`*[data-step='${this._steps[step]}']`);
+    const element = <HTMLElement>this._target.querySelector(`*[data-step='${this._steps[step]}']`);
     if(!element) {
       return this.next(revert ? --step : ++step, revert);
     }
@@ -129,8 +129,19 @@ export class IntroTS extends EventEmitter {
 
     }
 
+    if(element.dataset.interaction === 'no') {
+      this.block.addHelperClass('introts-disableInteraction')
+    } else {
+      this.block.removeHelperClass('introts-disableInteraction')
+    }
+
     if(this._options.scrollToElement) {
-      element.scrollIntoView({block: "center", behavior: "smooth"});
+      if(element.dataset.scrollTo) {
+        const block = <HTMLElement>this._target.querySelector(element.dataset.scrollTo)
+        if(block) block.scrollIntoView({block: "center", behavior: "smooth"});
+      } else {
+        element.scrollIntoView({block: "center", behavior: "smooth"});
+      }
     }
 
     this.dispatch(revert?'previous':'next', {step: step})
@@ -188,7 +199,7 @@ export class IntroTS extends EventEmitter {
 
     this.block.create(targetElement)
     if (this._options.highlight) {
-      this.block.setHighlightClass('introts-helperLayer')
+      this.block.addHelperClass('introts-helperLayer')
     }
     if (this._options.showButtons) {
       this.block.setShowButtons()
