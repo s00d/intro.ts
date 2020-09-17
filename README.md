@@ -100,15 +100,12 @@ intro.start();
   skipLabel: string,
   /** Done button label in tooltip box */
   doneLabel: string|null,
-
   /** Default tooltip box position */
   tooltipPosition: 'bottom'|'top'|'floating',
-
   /** Hide previous button in the first step? Otherwise, it will be disabled button. */
   hidePrev: boolean,
   /** Hide next button in the last step? Otherwise, it will be disabled button. */
   hideNext: boolean,
-
   /** CSS class that is added to the helperLayer */
   highlight: boolean,
   /** Close introduction when pressing Escape button? */
@@ -127,12 +124,10 @@ intro.start();
   showProgress: boolean,
   /** Scroll to highlighted element? */
   scrollToElement: boolean,
-
   /** Set the overlay opacity */
   overlayOpacity: number,
   /** Precedence of positions, when auto is enabled */
   positionPrecedence: Array<"bottom"|"top"|"right"|"left">,
-
   /** Set how much padding to be used around helper element */
   helperElementPadding: number,
   /** additional buttons, see examples */
@@ -180,7 +175,7 @@ stop() // programmatically stop guide
 <div class="span6" data-hint='test'>data</div>
 ```
 ```js
-require('intro-ts/src/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+require('intro-ts/src/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
 const { IntroTS } = require('intro-ts');
 const { Hints } = require('intro-ts');
 var intro = new IntroTS();
@@ -202,21 +197,21 @@ intro.addEventListener('next', (data) => {
 intro.start();
 ```
 
+```ts
 enableHints() - show hints 
-
 hideHints() - hide hints
-
 hideHint(stepId: number) -  hide hint by step number
+```
 
 ## PLUGINS
 
 ### VUE
 
 ```html
-<link href="./bandle/style.min.css" rel="stylesheet">
+<link href="./lib/bandle/style.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="./bandle/plugin_vue.js"></script> 
+<script src="./lib/bandle/plugin_vue.js"></script> 
 <!--or let { introVuePlugin } = require('intro-ts')-->
 ...
 <div class="container-narrow" id="index">
