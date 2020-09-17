@@ -1,8 +1,8 @@
 {
   "name": "intro-ts",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Better introductions for websites and features with a step-by-step guide for your projects",
-  "main": "lib/Intro.js",
+  "main": "lib/intro.js",
   "types": "lib/Intro.d.ts",
   "files": [
     "lib", "src"
