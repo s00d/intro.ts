@@ -15,9 +15,9 @@ Works easier and faster than the original, completely written in ts
 # Examples
   
 <ul>
-    <li><a href="hello-world/index.html" title='Basic usage'>Basic usage</a></li>
-    <li><a href="multi-page/index.html" title='Multi Page'>Multi Page</a></li>
-    <li><a href="vue/index.html" title='VUE'>VUE</a></li>
+    <li><a href="https://s00d.github.io/intro.ts/example/hello-world/index.html" title='Basic usage'>Basic usage</a></li>
+    <li><a href="https://s00d.github.io/intro.ts/example/multi-page/index.html" title='Multi Page'>Multi Page</a></li>
+    <li><a href="https://s00d.github.io/intro.ts/example/vue/index.html" title='VUE'>VUE</a></li>
 </ul>
 
 ## Installation
