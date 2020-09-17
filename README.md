@@ -81,6 +81,7 @@ intro.start();
 <link href="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/style.min.css" rel="stylesheet">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/intro.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/hints.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/plugin_vue.js"></script>
 
 ```
 
@@ -177,7 +178,7 @@ stop() // programmatically stop guide
 ```js
 require('intro-ts/src/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
 const { IntroTS } = require('intro-ts');
-const { Hints } = require('intro-ts/src/Hints.ts');
+const { Hints } = require('intro-ts');
 var intro = new IntroTS();
 var hints = new Hints(); // or require('intro-ts/lib/hints.js'); or see https://s00d.github.io/intro.ts/example/hello-world/index.html
 intro.setOptions({
@@ -208,6 +209,8 @@ hideHint(stepId: number) -  hide hint by step number
 ### VUE
 
 ```html
+<link href="./bandle/style.min.css" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="./bandle/plugin_vue.js"></script> 
 <!--or let { introVuePlugin } = require('intro-ts')-->
