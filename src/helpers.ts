@@ -18,6 +18,7 @@ export function mergeOptions(oldOptions: Options|null = null, newOptions: Option
       showButtons: true,
       showBullets: true,
       showProgress: false,
+      showSteps: true,
       scrollToElement: true,
       overlayOpacity: 0.5,
       positionPrecedence: ["bottom", "top", "right", "left"],

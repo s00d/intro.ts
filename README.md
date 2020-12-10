@@ -36,7 +36,7 @@ npm install intro-ts
 ```
 
 ```js
-require('intro-ts/src/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+require('intro-ts/lib/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
 const { IntroTS } = require('intro-ts');
 const intro = new IntroTS();
 intro.setOptions({
@@ -175,7 +175,7 @@ stop() // programmatically stop guide
 <div class="span6" data-hint='test'>data</div>
 ```
 ```js
-require('intro-ts/src/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+require('intro-ts/lib/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
 const { IntroTS } = require('intro-ts');
 const { Hints } = require('intro-ts');
 var intro = new IntroTS();

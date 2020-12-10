@@ -51,6 +51,16 @@ class IntroTS extends EventEmitter {
     })
     this._steps.sort();
 
+    if(step !== null) {
+      for(var i in this._steps) {
+        if(step === this._steps[i]) {
+          step = parseInt(i) - 1;
+        } else {
+          return this.stop();
+        }
+      }
+    }
+
     this.createElement(this._target)
 
     this.next(step);
@@ -102,7 +112,7 @@ class IntroTS extends EventEmitter {
         this.stop()
         return;
       }
-      if(!element) return this.next(step, revert);
+      // if(!element) return this.next(step, revert);
     }
     if(!this._steps[step]) {
       this.stop()
@@ -198,7 +208,7 @@ class IntroTS extends EventEmitter {
     this.block.createButton('previous', this._options.prevLabel, 'introts-button introts-prevbutton', ()=>this.previous());
     this.block.createButton('next', this._options.nextLabel, 'introts-button introts-nextbutton', ()=>this.next())
 
-    this.block.create(targetElement)
+    this.block.create(targetElement, this._options)
     if (this._options.highlight) {
       this.block.addHelperClass('introts-helperLayer')
     }

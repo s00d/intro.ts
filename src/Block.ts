@@ -1,4 +1,5 @@
 import {_getOffset, _isFixed, _setHelperLayerPosition, PosSetter} from "./helpers";
+import {Options} from "./types";
 
 export class Block {
   private layer: HTMLDivElement;
@@ -25,13 +26,13 @@ export class Block {
 
   }
 
-  create(targetElement: HTMLElement) {
+  create(targetElement: HTMLElement, options: Options) {
     this.targetElement = targetElement
     this.generateLayer();
     this.generateOverlay()
     this.generateHelper();
     this.generateReference();
-    this.generateHelperNumber();
+    if(options.showSteps) this.generateHelperNumber();
     this.generateTooltip();
     this.generateTooltipText();
     this.generateArrow();
