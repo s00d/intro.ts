@@ -40,7 +40,6 @@ export type Options = {
   /** Scroll to highlighted element? */
   scrollToElement: boolean,
 
-  showSteps: boolean,
   /** Set the overlay opacity */
   overlayOpacity: number,
   /** Precedence of positions, when auto is enabled */

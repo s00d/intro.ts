@@ -133,6 +133,7 @@ class IntroTS extends EventEmitter {
     this.block.setProgress(this.getProgress(), step)
     this.block.setText(element.getAttribute('data-intro') ?? '')
     this.block.updatePosition(this._steps[this._activeStep])
+    this.block.setWidth(element.getAttribute('data-width'))
 
     this.block.setButtonsClass(step===0?'first':step===this._steps.length-1?'last':'', this._options.showButtons)
     if(step===this._steps.length-1 && this._options.doneLabel) {

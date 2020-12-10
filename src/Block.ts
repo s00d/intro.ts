@@ -32,7 +32,7 @@ export class Block {
     this.generateOverlay()
     this.generateHelper();
     this.generateReference();
-    if(options.showSteps) this.generateHelperNumber();
+    this.generateHelperNumber();
     this.generateTooltip();
     this.generateTooltipText();
     this.generateArrow();
@@ -121,6 +121,14 @@ export class Block {
   }
   setShowProgress() {
     this.progress.style.removeProperty('display');
+  }
+
+  setWidth(width: string|null) {
+    if(width) {
+      this.tooltip.style.width = width+'px'
+    } else {
+      this.tooltip.style.removeProperty("width");
+    }
   }
 
   setText(text: string) {
