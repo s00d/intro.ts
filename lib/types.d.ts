@@ -18,7 +18,6 @@ export declare type Options = {
     showBullets: boolean;
     showProgress: boolean;
     scrollToElement: boolean;
-    showSteps: boolean;
     overlayOpacity: number;
     positionPrecedence: Array<"bottom" | "top" | "right" | "left">;
     helperElementPadding: number;

@@ -126,8 +126,10 @@ export class Block {
   setWidth(width: string|null) {
     if(width) {
       this.tooltip.style.width = width+'px'
+      this.tooltip.style.maxWidth = width+'px'
     } else {
       this.tooltip.style.removeProperty("width");
+      this.tooltip.style.removeProperty("maxWidth");
     }
   }
 

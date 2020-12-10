@@ -30,6 +30,7 @@ export declare class Block {
     removeHelperClass(highlightClass: string): void;
     setShowButtons(): void;
     setShowProgress(): void;
+    setWidth(width: string | null): void;
     setText(text: string): void;
     setShowHelperNumber(): void;
     overlayClick(): void;
