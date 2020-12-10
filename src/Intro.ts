@@ -103,9 +103,11 @@ class IntroTS extends EventEmitter {
       step = revert ? this._steps.length-1 : 0
     } else {
       const element = <HTMLElement>this._target.querySelector(`*[data-step='${this._steps[step]}']`);
-      element.classList.remove('intro-show')
-      element.classList.remove('introts-showElement')
-      element.classList.remove('introjs-relativePosition')
+      if (element) {
+       element.classList.remove('intro-show')
+       element.classList.remove('introts-showElement')
+       element.classList.remove('introjs-relativePosition')
+      }
 
       revert ? step-- : step++;
       if(!this._steps[step]) {

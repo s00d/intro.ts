@@ -1,3 +1,4 @@
+import { Options } from "./types";
 export declare class Block {
     private layer;
     private reference;
@@ -15,7 +16,7 @@ export declare class Block {
     private helper;
     private _posSetter;
     constructor(helperElementPadding: number | undefined, showStepNumbers: boolean, positionPrecedence: Array<string>);
-    create(targetElement: HTMLElement): void;
+    create(targetElement: HTMLElement, options: Options): void;
     createButton(name: string, label: string, className: string, callback: () => void, last?: boolean): void;
     addButton(name: string, label: string, className: string, callback: () => void, last?: boolean): void;
     removeButton(name: string): void;
