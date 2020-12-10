@@ -7,6 +7,7 @@ declare class IntroTS extends EventEmitter {
     private _target;
     private block;
     private layer;
+    private active;
     constructor(target?: HTMLElement | null);
     setOption(option: string, value: any): this;
     setOptions(options: Options): this;

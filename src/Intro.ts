@@ -10,6 +10,7 @@ class IntroTS extends EventEmitter {
   private _target: HTMLElement;
   private block: Block;
   private layer = false;
+  private active = false;
 
   constructor(target: HTMLElement|null = null) {
     super();
@@ -67,7 +68,7 @@ class IntroTS extends EventEmitter {
     if (this._options.keyboardNavigation) {
       window.addEventListener('keydown', (e) => this._onKeyDown(e))
     }
-    window.addEventListener('resize', () => this.block.updatePosition(this._activeStep!==null?this._steps[this._activeStep]:undefined))
+    window.addEventListener('resize', () => this.stop())
 
     this.dispatch('start')
     return this
@@ -98,6 +99,7 @@ class IntroTS extends EventEmitter {
   }
 
   next(step: number|null = null, revert = false): void {
+    this.active = true;
     if(step === null) step = this._activeStep
     if(step === null) {
       step = revert ? this._steps.length-1 : 0
@@ -166,6 +168,9 @@ class IntroTS extends EventEmitter {
   }
 
   stop(): void {
+    if(this.active) return;
+    this.active = false;
+
     this._target.querySelectorAll(`.intro-show`).forEach((item: HTMLElement) => {
       item.classList.remove('intro-show')
     });
