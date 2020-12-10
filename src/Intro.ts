@@ -168,7 +168,7 @@ class IntroTS extends EventEmitter {
   }
 
   stop(): void {
-    if(this.active) return;
+    if(!this.active) return;
     this.active = false;
 
     this._target.querySelectorAll(`.intro-show`).forEach((item: HTMLElement) => {
