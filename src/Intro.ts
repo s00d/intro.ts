@@ -223,7 +223,7 @@ class IntroTS extends EventEmitter {
     if (this._options.showButtons) {
       this.block.setShowButtons()
     }
-    if (!this._options.showProgress) {
+    if (this._options.showProgress) {
       this.block.setShowProgress()
     }
     if (this._options.showStepNumbers) {
