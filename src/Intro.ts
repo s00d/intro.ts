@@ -1,7 +1,7 @@
 import { Options } from "./types";
-import { mergeOptions } from "./helpers";
 import { Block } from "./Block";
 import {EventEmitter} from "./EventEmitter";
+import {mergeOptions} from "./Helpers/mergeOptions";
 
 class IntroTS extends EventEmitter {
   private _options: Options;
@@ -44,6 +44,7 @@ class IntroTS extends EventEmitter {
   }
 
   start(step:number|null = null) {
+    this.stop();
     this._steps = [];
     const elements = this._target.querySelectorAll("*[data-intro]");
     elements.forEach((el: HTMLElement, key: number) => {
@@ -53,13 +54,15 @@ class IntroTS extends EventEmitter {
     this._steps.sort();
 
     if(step !== null) {
-      for(var i in this._steps) {
+      let none = true;
+      for(const i in this._steps) {
         if(step === this._steps[i]) {
           step = parseInt(i) - 1;
-        } else {
-          return this.stop();
+          none = false;
+          break;
         }
       }
+      if(none) this.stop();
     }
 
     this.createElement(this._target)
@@ -137,13 +140,23 @@ class IntroTS extends EventEmitter {
     this.block.updatePosition(this._steps[this._activeStep])
     this.block.setWidth(element.getAttribute('data-width'))
 
-    this.block.setButtonsClass(step===0?'first':step===this._steps.length-1?'last':'', this._options.showButtons)
+    this.block.setButtonsClass(step===0, step===this._steps.length-1, this._options.showButtons)
     if(step===this._steps.length-1 && this._options.doneLabel) {
       this.block.addButton('done', this._options.doneLabel, 'introts-button introts-nextbutton', ()=>this.dispatch('finish'), false);
     } else if(this._options.doneLabel) {
       this.block.removeButton('done')
-
     }
+
+    if(this._options.hideSkip) {
+      this.block.setButtonClass('skip', 'introts-hidden')
+    }
+    if(this._options.hidePrev) {
+      this.block.setButtonClass('previous', 'introts-hidden')
+    }
+    if(this._options.hideNext) {
+      this.block.setButtonClass('next', 'introts-hidden')
+    }
+
 
     if(element.dataset.interaction === 'no') {
       this.block.addHelperClass('introts-disableInteraction')
@@ -154,11 +167,15 @@ class IntroTS extends EventEmitter {
     if(this._options.scrollToElement) {
       if(element.dataset.scrollTo) {
         const block = <HTMLElement>this._target.querySelector(element.dataset.scrollTo)
-        if(block) block.scrollIntoView({block: "center", behavior: "smooth"});
+        if(block) block.scrollIntoView({block: "center", behavior: "auto"});
       } else {
-        element.scrollIntoView({block: "center", behavior: "smooth"});
+        element.scrollIntoView({block: "center", behavior: "auto"});
       }
     }
+
+    setTimeout(() => {
+      this.block.updatePosition(this._steps[this._activeStep!]);
+    }, 300);
 
     this.dispatch(revert?'previous':'next', {step: step})
   }
@@ -174,6 +191,13 @@ class IntroTS extends EventEmitter {
     this._target.querySelectorAll(`.intro-show`).forEach((item: HTMLElement) => {
       item.classList.remove('intro-show')
     });
+    this._target.querySelectorAll(`.introts-showElement`).forEach((item: HTMLElement) => {
+      item.classList.remove('introts-showElement')
+    });
+    this._target.querySelectorAll(`.introts-relativePosition`).forEach((item: HTMLElement) => {
+      item.classList.remove('introts-relativePosition')
+    });
+
     window.removeEventListener('keydown', (e) => this._onKeyDown(e))
     window.removeEventListener('resize', () => this.block.updatePosition(this._activeStep!==null?this._steps[this._activeStep]:undefined))
 

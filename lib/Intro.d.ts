@@ -12,7 +12,7 @@ declare class IntroTS extends EventEmitter {
     setOption(option: string, value: any): this;
     setOptions(options: Options): this;
     refresh(): this;
-    start(step?: number | null): void | this;
+    start(step?: number | null): this;
     getStep(): number | null;
     addStep(element: HTMLElement | string, intro: string, step?: number, position?: string): this;
     addSteps(data: Array<{

@@ -20,7 +20,7 @@ export declare class Block {
     createButton(name: string, label: string, className: string, callback: () => void, last?: boolean): void;
     addButton(name: string, label: string, className: string, callback: () => void, last?: boolean): void;
     removeButton(name: string): void;
-    setButtonsClass(step: 'first' | 'last' | string, hide: boolean): void;
+    setButtonsClass(first: boolean, last: boolean, hide: boolean): void;
     setButtonClass(button: string, className: string): void;
     setButtonText(button: string, text: string): void;
     removeButtonClass(button: string, className: string): void;
@@ -45,5 +45,4 @@ export declare class Block {
     protected generateTooltip(): void;
     protected generateArrow(): void;
     protected generateReference(): void;
-    protected generateHelper(): void;
 }

@@ -16,10 +16,12 @@ export type Options = {
   /** Default tooltip box position */
   tooltipPosition: 'bottom'|'top'|'floating',
 
-  /** Hide previous button in the first step? Otherwise, it will be disabled button. */
+  /** Hide previous button? */
   hidePrev: boolean,
-  /** Hide next button in the last step? Otherwise, it will be disabled button. */
+  /** Hide next button? */
   hideNext: boolean,
+  /** Hide skip button? */
+  hideSkip: boolean,
 
   /** CSS class that is added to the helperLayer */
   highlight: boolean,

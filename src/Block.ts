@@ -1,5 +1,7 @@
-import {_getOffset, _isFixed, _setHelperLayerPosition, PosSetter} from "./helpers";
 import {Options} from "./types";
+import {PosSetter} from "./Helpers/PosSetter";
+import {_setHelperLayerPosition} from "./Helpers/_setHelperLayerPosition";
+import {_getOffset} from "./Helpers/_getOffset";
 
 export class Block {
   private layer: HTMLDivElement;
@@ -30,7 +32,6 @@ export class Block {
     this.targetElement = targetElement
     this.generateLayer();
     this.generateOverlay()
-    this.generateHelper();
     this.generateReference();
     this.generateHelperNumber();
     this.generateTooltip();
@@ -69,15 +70,15 @@ export class Block {
     delete this.buttonsList[name];
   }
 
-  setButtonsClass(step: 'first'|'last'|string, hide: boolean) {
+  setButtonsClass(first: boolean, last: boolean, hide: boolean) {
     this.removeButtonClass('previous', 'introts-hidden')
     this.removeButtonClass('next', 'introts-hidden')
     this.removeButtonClass('previous', 'introts-disabled')
     this.removeButtonClass('next', 'introts-disabled')
-    if(step === 'first') {
+    if(first) {
       this.setButtonClass('previous', hide?'introts-hidden':'introts-disabled')
     }
-    if(step === 'last') {
+    if(last) {
       this.setButtonClass('next', hide?'introts-hidden':'introts-disabled')
     }
   }
@@ -108,11 +109,15 @@ export class Block {
   }
 
   addHelperClass(highlightClass: string) {
-    if(this.helper.classList.contains(highlightClass)) return;
+    if(!this.helper) {
+      this.helper = document.createElement('div');
+      this.layer.append(this.helper);
+    }
     this.helper.classList.add(highlightClass);
   }
 
   removeHelperClass(highlightClass: string) {
+    if(!this.helper) return;
     this.helper.classList.remove(highlightClass);
   }
 
@@ -248,10 +253,5 @@ export class Block {
     this.reference = document.createElement('div');
     this.reference.className = 'introts-tooltipReferenceLayer';
     this.layer.append(this.reference);
-  }
-
-  protected generateHelper() {
-    this.helper = document.createElement('div');
-    this.layer.append(this.helper);
   }
 }

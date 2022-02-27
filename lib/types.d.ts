@@ -9,6 +9,7 @@ export declare type Options = {
     tooltipPosition: 'bottom' | 'top' | 'floating';
     hidePrev: boolean;
     hideNext: boolean;
+    hideSkip: boolean;
     highlight: boolean;
     exitOnEsc: boolean;
     exitOnOverlayClick: boolean;

@@ -1,5 +1,7 @@
-import {_getOffset, _isFixed, _setHelperLayerPosition, alignHintPosition} from "./helpers";
 import {EventEmitter} from "./EventEmitter";
+import {_isFixed} from "./Helpers/_isFixed";
+import {alignHintPosition} from "./Helpers/alignHintPosition";
+import {_setHelperLayerPosition} from "./Helpers/_setHelperLayerPosition";
 
 class Hints extends EventEmitter {
   private hints: { [stepId: number]: HTMLElement };
@@ -149,7 +151,7 @@ class Hints extends EventEmitter {
     // align reference layer position
     referenceLayer.className = 'introts-tooltipReferenceLayer introts-hintReference';
     referenceLayer.setAttribute('data-step', stepId.toString());
-    _setHelperLayerPosition(referenceLayer, 0, 50);
+    _setHelperLayerPosition(referenceLayer);
 
     referenceLayer.appendChild(tooltipLayer);
     this.target.appendChild(referenceLayer);
