@@ -130,15 +130,15 @@ class Hints extends EventEmitter {
   protected showHintDialog(element: HTMLElement, text: string, stepId: number) {
     element.classList.add('intro-show')
 
-    var tooltipLayer = document.createElement('div');
-    var tooltipTextLayer = document.createElement('div');
-    var arrowLayer = document.createElement('div');
-    var referenceLayer = document.createElement('div');
+    const tooltipLayer = document.createElement('div');
+    const tooltipTextLayer = document.createElement('div');
+    const arrowLayer = document.createElement('div');
+    const referenceLayer = document.createElement('div');
 
     tooltipLayer.className = 'introts-tooltip';
     tooltipTextLayer.className = 'introts-tooltiptext';
 
-    var tooltipWrapper = document.createElement('p');
+    const tooltipWrapper = document.createElement('p');
     tooltipWrapper.innerHTML = text;
 
     tooltipTextLayer.appendChild(tooltipWrapper);
@@ -151,7 +151,7 @@ class Hints extends EventEmitter {
     // align reference layer position
     referenceLayer.className = 'introts-tooltipReferenceLayer introts-hintReference';
     referenceLayer.setAttribute('data-step', stepId.toString());
-    _setHelperLayerPosition(referenceLayer);
+    _setHelperLayerPosition(this.target, referenceLayer);
 
     referenceLayer.appendChild(tooltipLayer);
     this.target.appendChild(referenceLayer);

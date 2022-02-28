@@ -1,5 +1,5 @@
-export function _removeEntry(stringArray: Array<string>, el: string) {
-  if (stringArray.indexOf(el) > -1) {
-    stringArray.splice(stringArray.indexOf(el), 1);
+export function _removeEntry(stringArray: Array<string>, stringToRemove: string) {
+  if (stringArray.includes(stringToRemove)) {
+    stringArray.splice(stringArray.indexOf(stringToRemove), 1);
   }
 }

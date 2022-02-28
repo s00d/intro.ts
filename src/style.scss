@@ -172,10 +172,6 @@ tr.introts-showElement > th {
   min-width: 200px;
   max-width: 300px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
-  -webkit-transition: opacity 0.1s ease-out;
-  -moz-transition: opacity 0.1s ease-out;
-  -ms-transition: opacity 0.1s ease-out;
-  -o-transition: opacity 0.1s ease-out;
   transition: opacity 0.1s ease-out;
 }
 
@@ -195,7 +191,6 @@ tr.introts-showElement > th {
   display: inline-block;
   padding: 0.3em 0.8em;
   border: 1px solid #d4d4d4;
-  margin: 0;
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
   font: 11px/normal sans-serif;
@@ -212,19 +207,17 @@ tr.introts-showElement > th {
   -moz-background-clip: padding;
   -o-background-clip: padding-box;
   /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
   border-radius: 0;
   /* IE hacks */
   zoom: 1;
   *display: inline;
-  margin-top: 10px;
+  margin: 10px 0 0;
 }
 
 .introts-button:hover {
   border-color: #bcbcbc;
   text-decoration: none;
-  box-shadow: 0px 1px 1px #e3e3e3;
+  box-shadow: 0 1px 1px #e3e3e3;
 }
 
 .introts-button:focus,
@@ -304,10 +297,17 @@ tr.introts-showElement > th {
   cursor: pointer;
 }
 .introts-bullets ul li a:hover {
-  background: #999;
-}
-.introts-bullets ul li a.active {
-  background: #999;
+  ul {
+    li {
+      a:hover {
+        background: #999;
+      }
+      a.active {
+        background: #999;
+      }
+    }
+  }
+
 }
 
 .introts-progress {
@@ -369,37 +369,23 @@ tr.introts-showElement > th {
   width: 10px;
   height: 10px;
   border: 5px solid rgba(60, 60, 60, 0.27);
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
   border-radius: 30px;
   background-color: rgba(136, 136, 136, 0.24);
   z-index: 10;
   position: absolute;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
 .introts-hint-no-anim .introts-hint-dot {
-  -webkit-animation: none;
-  -moz-animation: none;
   animation: none;
 }
 .introts-hint-dot {
   box-sizing: content-box;
   border: 10px solid rgba(146, 146, 146, 0.36);
   background: transparent;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
   border-radius: 60px;
   height: 50px;
   width: 50px;
-  -webkit-animation: introtspulse 3s ease-out;
-  -moz-animation: introtspulse 3s ease-out;
   animation: introtspulse 3s ease-out;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   position: absolute;
   top: -25px;

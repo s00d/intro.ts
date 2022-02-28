@@ -172,8 +172,8 @@ export class Block {
   }
 
   updatePosition(step: number|undefined) {
-    _setHelperLayerPosition(this.reference, this.helperElementPadding)
-    _setHelperLayerPosition(this.helper, this.helperElementPadding)
+    _setHelperLayerPosition(this.targetElement, this.reference, this.helperElementPadding)
+    _setHelperLayerPosition(this.targetElement, this.helper, this.helperElementPadding)
 
     if(step !== undefined) {
       this._posSetter.place(step, this.tooltip, this.arrow, this.helperNumberLayer);

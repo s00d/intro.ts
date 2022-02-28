@@ -1,11 +1,12 @@
 import {_isFixed} from "./_isFixed";
 import {_getOffset} from "./_getOffset";
+import IntroTS from "../Intro";
 
-export function _setHelperLayerPosition(helperLayer: HTMLElement, helperElementPadding: number = 0, offset: number = 0) {
+export function _setHelperLayerPosition(targetElement: HTMLElement, helperLayer: HTMLDivElement, helperElementPadding: number = 0, offset: number = 0) {
   if (helperLayer) {
     const element = <HTMLElement>document.querySelector(`.intro-show`);
     if(!element) return;
-    const elementPosition = _getOffset(element)
+    const elementPosition = _getOffset(element, targetElement)
     let widthHeightPadding = helperElementPadding;
 
     if (_isFixed(element)) {

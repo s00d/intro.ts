@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as webpack from 'webpack';
-import TerserWebpackPlugin from 'terser-webpack-plugin';
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 
 const config: webpack.Configuration = {
   optimization: {
@@ -9,13 +10,9 @@ const config: webpack.Configuration = {
     minimizer: [
       new TerserWebpackPlugin({
         parallel: true,
-        sourceMap: false,
-        cache: true,
         exclude: ["babel-polyfill", "whatwg-fetch"],
         terserOptions: {
-          warnings: true,
           compress: {
-            warnings: false,
             drop_debugger: true,
             drop_console: false,
             unsafe: false,
@@ -42,19 +39,38 @@ const config: webpack.Configuration = {
     plugin_vue: path.resolve(__dirname, "src/plugin_vue.ts")
   },
   output: {
-    path: path.resolve(__dirname, "./lib/bandle"),
+    path: path.resolve(__dirname, "./lib"),
     filename: "[name].js",
   },
+  devtool: 'source-map',
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     rules: [
-      {test: /\.tsx?$/, loader: "ts-loader"}
+      {test: /\.tsx?$/, loader: "ts-loader"},
+      {
+        test:/.(s*)css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              url: false
+            }
+          },
+          "sass-loader",
+          "postcss-loader"
+        ]
+      }
     ]
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: './style.min.css',
+    }),
+  ],
   resolve: {
     extensions: [".js", ".ts"]
   },
-  devtool: false,
 };
 
 module.exports = config;

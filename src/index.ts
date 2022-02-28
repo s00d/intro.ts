@@ -1,6 +1,7 @@
 import { IntroTS } from './Intro'
 import { Hints } from './Hints'
 import { introVuePlugin } from './plugin_vue'
+import './style.scss';
 
 class Def {
   public intro() {

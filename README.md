@@ -36,7 +36,7 @@ npm install intro-ts
 ```
 
 ```js
-require('intro-ts/lib/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+require('intro-ts/lib/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
 const { IntroTS } = require('intro-ts');
 const intro = new IntroTS();
 intro.setOptions({
@@ -69,8 +69,8 @@ intro.start();
 ### how to use in the browser?
 
 ```html
-<link href="./lib/bandle/style.min.css" rel="stylesheet">
-<script type="text/javascript" src="./lib/bandle/intro.js"></script>
+<link href="./lib/style.min.css" rel="stylesheet">
+<script type="text/javascript" src="./lib/intro.js"></script>
 <script>
   function start() {
     var intro = new window.IntroTS();
@@ -83,9 +83,9 @@ intro.start();
 
 ```html
 <link href="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/style.min.css" rel="stylesheet">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/intro.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/hints.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/bandle/plugin_vue.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/intro.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/hints.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/intro-ts/lib/plugin_vue.js"></script>
 
 ```
 
@@ -175,7 +175,7 @@ stop() // programmatically stop guide
 <div class="span6" data-hint='test'>data</div>
 ```
 ```js
-require('intro-ts/lib/bandle/style.scss') // or require('intro-ts/lib/bandle/style.min.css'); or you can add other styles
+require('intro-ts/lib/style.scss') // or require('intro-ts/lib/style.min.css'); or you can add other styles
 const { IntroTS } = require('intro-ts');
 const { Hints } = require('intro-ts');
 var intro = new IntroTS();
@@ -208,10 +208,10 @@ hideHint(stepId: number) -  hide hint by step number
 ### VUE
 
 ```html
-<link href="./lib/bandle/style.min.css" rel="stylesheet">
+<link href="./lib/style.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="./lib/bandle/plugin_vue.js"></script> 
+<script src="./lib/plugin_vue.js"></script> 
 <!--or let { introVuePlugin } = require('intro-ts')-->
 ...
 <div class="container-narrow" id="index">

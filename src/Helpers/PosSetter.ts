@@ -78,33 +78,39 @@ export class PosSetter {
     }
   }
 
-  private _determineAutoAlignment (offsetLeft: number, tooltipWidth: number, windowSize: size, desiredAlignment: string) {
-    var halfTooltipWidth = tooltipWidth / 2,
-      winWidth = Math.min(windowSize.width, window.screen.width),
-      possibleAlignments = ['-left-aligned', '-middle-aligned', '-right-aligned'],
-      calculatedAlignment = '';
+  private _determineAutoAlignment (offsetLeft: number, tooltipWidth: number, { width }: { width: number }, desiredAlignment: string) {
+    const halfTooltipWidth = tooltipWidth / 2;
+    const winWidth = Math.min(width, window.screen.width);
+    const possibleAlignments = [
+      "-left-aligned",
+      "-middle-aligned",
+      "-right-aligned",
+    ];
+    let calculatedAlignment = "";
 
     // valid left must be at least a tooltipWidth
     // away from right side
     if (winWidth - offsetLeft < tooltipWidth) {
-      _removeEntry(possibleAlignments, '-left-aligned');
+      _removeEntry(possibleAlignments, "-left-aligned");
     }
 
     // valid middle must be at least half
     // width away from both sides
-    if (offsetLeft < halfTooltipWidth ||
-      winWidth - offsetLeft < halfTooltipWidth) {
-      _removeEntry(possibleAlignments, '-middle-aligned');
+    if (
+      offsetLeft < halfTooltipWidth ||
+      winWidth - offsetLeft < halfTooltipWidth
+    ) {
+      _removeEntry(possibleAlignments, "-middle-aligned");
     }
 
     // valid right must be at least a tooltipWidth
     // width away from left side
     if (offsetLeft < tooltipWidth) {
-      _removeEntry(possibleAlignments, '-right-aligned');
+      _removeEntry(possibleAlignments, "-right-aligned");
     }
 
     if (possibleAlignments.length) {
-      if (possibleAlignments.indexOf(desiredAlignment) !== -1) {
+      if (possibleAlignments.includes(desiredAlignment)) {
         // the desired alignment is valid
         calculatedAlignment = desiredAlignment;
       } else {
@@ -115,29 +121,28 @@ export class PosSetter {
       // if screen width is too small
       // for ANY alignment, middle is
       // probably the best for visibility
-      calculatedAlignment = '-middle-aligned';
+      calculatedAlignment = "-middle-aligned";
     }
 
     return calculatedAlignment;
   }
 
   private _determineAutoPosition(targetElement: HTMLElement, tooltipLayer: HTMLElement, desiredTooltipPosition: string) {
+// Take a clone of position precedence. These will be the available
+    const possiblePositions = this.positionPrecedence!.slice();
 
-    // Take a clone of position precedence. These will be the available
-    var possiblePositions = this.positionPrecedence.slice();
-
-    var windowSize = _getWinSize();
-    var tooltipHeight = _getOffset(tooltipLayer).height + 10;
-    var tooltipWidth = _getOffset(tooltipLayer).width + 20;
-    var targetElementRect = targetElement.getBoundingClientRect();
+    const windowSize = _getWinSize();
+    const tooltipHeight = _getOffset.call(this, tooltipLayer).height + 10;
+    const tooltipWidth = _getOffset.call(this, tooltipLayer).width + 20;
+    const targetElementRect = targetElement.getBoundingClientRect();
 
     // If we check all the possible areas, and there are no valid places for the tooltip, the element
     // must take up most of the screen real estate. Show the tooltip floating in the middle of the screen.
-    var calculatedPosition = "floating";
+    let calculatedPosition = "floating";
 
     /*
-    * auto determine position
-    */
+     * auto determine position
+     */
 
     // Check for space below
     if (targetElementRect.bottom + tooltipHeight > windowSize.height) {
@@ -160,25 +165,24 @@ export class PosSetter {
     }
 
     // @var {String}  ex: 'right-aligned'
-    const desiredAlignment = ( (pos) => {
-      const hyphenIndex = pos.indexOf('-');
+    const desiredAlignment = ((pos) => {
+      const hyphenIndex = pos.indexOf("-");
       if (hyphenIndex !== -1) {
         // has alignment
         return pos.substr(hyphenIndex);
       }
-      return '';
-    })(desiredTooltipPosition || '');
+      return "";
+    })(desiredTooltipPosition || "");
 
     // strip alignment from position
     if (desiredTooltipPosition) {
       // ex: "bottom-right-aligned"
       // should return 'bottom'
-      desiredTooltipPosition = desiredTooltipPosition.split('-')[0];
+      desiredTooltipPosition = desiredTooltipPosition.split("-")[0];
     }
 
     if (possiblePositions.length) {
-      if (desiredTooltipPosition !== "auto" &&
-        possiblePositions.indexOf(desiredTooltipPosition) > -1) {
+      if (possiblePositions.includes(desiredTooltipPosition)) {
         // If the requested position is in the list, choose that
         calculatedPosition = desiredTooltipPosition;
       } else {
@@ -188,8 +192,13 @@ export class PosSetter {
     }
 
     // only top and bottom positions have optional alignments
-    if (['top', 'bottom'].indexOf(calculatedPosition) !== -1) {
-      calculatedPosition += this._determineAutoAlignment(targetElementRect.left, tooltipWidth, windowSize, desiredAlignment);
+    if (["top", "bottom"].includes(calculatedPosition)) {
+      calculatedPosition += this._determineAutoAlignment(
+        targetElementRect.left,
+        tooltipWidth,
+        windowSize,
+        desiredAlignment
+      );
     }
 
     return calculatedPosition;
