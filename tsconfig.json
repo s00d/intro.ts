@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "./lib",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -9,9 +10,15 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "module": "commonjs",
-    "target": "es5",
+    "moduleResolution": "node",
+    "target": "es2017",
     "removeComments": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "allowJs": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ]
   },
   "include": ["src/**/*.ts"],
   "files": [

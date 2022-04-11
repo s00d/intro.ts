@@ -17,3 +17,6 @@ class Def {
 export default new Def()
 
 export { IntroTS, Hints, introVuePlugin, Def }
+
+module.exports = { IntroTS, Hints, introVuePlugin, Def }
+module.exports.default = Def;

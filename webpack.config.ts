@@ -1,9 +1,8 @@
 import * as path from "path";
-import * as webpack from 'webpack';
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 
-const config: webpack.Configuration = {
+module.exports = {
   optimization: {
     minimize: true,
     concatenateModules: true,
@@ -46,7 +45,7 @@ const config: webpack.Configuration = {
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     rules: [
-      {test: /\.tsx?$/, loader: "ts-loader"},
+      {test: /\.tsx?$/, enforce: 'pre', loader: "ts-loader"},
       {
         test:/.(s*)css$/,
         use: [
@@ -57,8 +56,7 @@ const config: webpack.Configuration = {
               url: false
             }
           },
-          "sass-loader",
-          "postcss-loader"
+          "sass-loader"
         ]
       }
     ]
@@ -72,5 +70,3 @@ const config: webpack.Configuration = {
     extensions: [".js", ".ts"]
   },
 };
-
-module.exports = config;
