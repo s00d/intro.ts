@@ -1,7 +1,7 @@
 import { IntroTS } from './Intro'
 import { Hints } from './Hints'
 import { introVuePlugin } from './plugin_vue'
-import './style.scss';
+// import './style.scss';
 
 class Def {
   public intro() {
@@ -18,5 +18,5 @@ export default new Def()
 
 export { IntroTS, Hints, introVuePlugin, Def }
 
-module.exports = { IntroTS, Hints, introVuePlugin, Def }
-module.exports.default = Def;
+// module.exports = { IntroTS, Hints, introVuePlugin, Def }
+// module.exports.default = Def;

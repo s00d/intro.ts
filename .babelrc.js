@@ -22,9 +22,6 @@ module.exports = {
         "@babel/plugin-proposal-throw-expressions"
     ],
     presets: [
-        '@babel/preset-react',
-        ['@babel/preset-env', {
-            modules: 'commonjs',
-        }]
+        "@babel/preset-env"
     ]
 };

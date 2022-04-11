@@ -9,11 +9,15 @@ module.exports = {
     minimizer: [
       new TerserWebpackPlugin({
         parallel: true,
+        sourceMap: false,
+        cache: true,
         exclude: ["babel-polyfill", "whatwg-fetch"],
         terserOptions: {
+          warnings: true,
           compress: {
+            warnings: false,
             drop_debugger: true,
-            drop_console: false,
+            drop_console: true,
             unsafe: false,
             global_defs: {
               DEBUG: false,
@@ -38,14 +42,13 @@ module.exports = {
     plugin_vue: path.resolve(__dirname, "src/plugin_vue.ts")
   },
   output: {
-    path: path.resolve(__dirname, "./lib"),
+    path: path.resolve(__dirname, "./lib/bandle"),
     filename: "[name].js",
   },
-  devtool: 'source-map',
   module: {
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     rules: [
-      {test: /\.tsx?$/, enforce: 'pre', loader: "ts-loader"},
+      {test: /\.tsx?$/, loader: "ts-loader"},
       {
         test:/.(s*)css$/,
         use: [
@@ -56,7 +59,8 @@ module.exports = {
               url: false
             }
           },
-          "sass-loader"
+          "sass-loader",
+          "postcss-loader"
         ]
       }
     ]
@@ -69,4 +73,5 @@ module.exports = {
   resolve: {
     extensions: [".js", ".ts"]
   },
+  devtool: false,
 };
