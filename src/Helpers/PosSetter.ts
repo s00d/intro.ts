@@ -6,6 +6,8 @@ import {_removeEntry} from "./_removeEntry";
 export class PosSetter {
   private readonly showStepNumbers: boolean;
   private readonly positionPrecedence: Array<string>;
+  private timer: NodeJS.Timeout|null = null;
+  private interval: NodeJS.Timer|null = null;
   constructor(showStepNumbers: boolean = false, positionPrecedence: Array<string> = []) {
     this.showStepNumbers = showStepNumbers
     this.positionPrecedence = positionPrecedence
@@ -32,6 +34,34 @@ export class PosSetter {
 
     //if we have a custom css class for each step
     tooltipLayer.className = 'introts-tooltip';
+
+    tooltipLayer.classList.add('introts-shake')
+
+    if(!this.timer) {
+      console.log('hidder')
+      tooltipLayer.style.opacity = '0.0';
+      this.timer = setTimeout(() => {
+        if(!this.interval) {
+          this.interval = setInterval(() => {
+            tooltipLayer.style.opacity = (parseFloat(tooltipLayer.style.opacity) + 0.1).toString();
+            if(parseFloat(tooltipLayer.style.opacity) >= 1.0 && this.interval) {
+              clearInterval(this.interval)
+              this.interval = null;
+            }
+          }, 10);
+        }
+
+        setTimeout(() => {
+          tooltipLayer.classList.remove('introts-shake')
+        }, 100)
+
+
+        if(this.timer) {
+          this.timer = null;
+        }
+      }, 500);
+    }
+
     tooltipLayer.setAttribute('role', 'dialog');
 
 

@@ -1,6 +1,8 @@
 export declare class PosSetter {
     private readonly showStepNumbers;
     private readonly positionPrecedence;
+    private timer;
+    private interval;
     constructor(showStepNumbers?: boolean, positionPrecedence?: Array<string>);
     place(step: number | undefined, tooltipLayer: HTMLElement, arrowLayer: HTMLElement, helperNumberLayer: HTMLElement): void;
     private _determineAutoAlignment;

@@ -1,6 +1,6 @@
 {
   "name": "intro-ts",
-  "version": "1.3.28",
+  "version": "1.3.29",
   "description": "Better introductions for websites and features with a step-by-step guide for your projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "bandle": "cross-env NODE_ENV=production node_modules/.bin/webpack-cli --config webpack.config.ts --mode production --hide-modules -p",
-    "bandle:style": "sass src/style.scss --style=compressed > lib/bandle/style.min.css && cp src/style.scss lib/bandle/style.scss && cp src/style.scss lib/style.scss",
+    "bandle:dev": "cross-env NODE_ENV=development node_modules/.bin/webpack-cli --config webpack.config.ts --mode development --hide-modules -p",
+    "bandle:style": "sass src/style.scss --style=compressed > lib/style.min.css && cp src/style.scss lib/bandle/style.scss && cp src/style.scss lib/style.scss && cp lib/style.min.css lib/bandle/style.min.css",
     "clean": "rimraf lib && rimraf dist",
     "prepublish": "npm run clean && npm run bandle && tsc && npm run bandle:style",
     "test": "./node_modules/.bin/nightwatch"

@@ -17,7 +17,7 @@ module.exports = {
           compress: {
             warnings: false,
             drop_debugger: true,
-            drop_console: true,
+            drop_console: false,
             unsafe: false,
             global_defs: {
               DEBUG: false,

@@ -32,7 +32,7 @@
   <hr>
 
   <div class="jumbotron">
-    <h1 data-step="1" data-intro="This is a tooltip!">Basic Usage</h1>
+    <h1 data-step="1" data-intro="This is a tooltip!" data-position='right'>Basic Usage</h1>
     <p class="lead" data-step="4" data-intro="Another step.">This is the basic usage of IntroTS, with <code>data-step</code> and <code>data-intro</code> attributes.</p>
     <a class="btn btn-large btn-success intro-run" id="intro-run" href="javascript:void(0);" onclick="start()">Show me how</a>
   </div>
@@ -66,8 +66,8 @@
 
   <hr>
 </div>
-<script type="text/javascript" src="../../lib/intro.js"></script>
-<script type="text/javascript" src="../../lib/hints.js"></script>
+<script type="text/javascript" src="../../lib/bandle/intro.js"></script>
+<script type="text/javascript" src="../../lib/bandle/hints.js"></script>
 <script>
   function start() {
     var intro = new window.IntroTS();
