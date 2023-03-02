@@ -14,6 +14,7 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 12
+    - run: npm i -g cross-env
     - run: npm install
     - name: tsc
       uses: icrawl/action-tsc@v1
