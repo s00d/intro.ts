@@ -49,6 +49,10 @@ class IntroTS extends EventEmitter {
     const elements = this._target.querySelectorAll("*[data-intro]");
     elements.forEach((el: HTMLElement, key: number) => {
       if(!el.dataset.step) el.dataset.step = (key-1).toString();
+      let more = el.getAttribute('data-more') ?? null
+      if(more && (window.innerWidth < parseInt(more))) return;
+      let less = el.getAttribute('data-less') ?? null
+      if (less && window.innerWidth > parseInt(less)) return;
       this._steps.push(parseInt(<string>el.dataset.step, 10));
     })
     this._steps.sort();
@@ -129,6 +133,7 @@ class IntroTS extends EventEmitter {
     if(!element) {
       return this.next(revert ? --step : ++step, revert);
     }
+
     this._activeStep = step
     element.classList.add('intro-show')
     element.classList.add('introts-showElement')
@@ -165,11 +170,16 @@ class IntroTS extends EventEmitter {
     }
 
     if(this._options.scrollToElement) {
-      if(element.dataset.scrollTo) {
+      if(this._options.scrollToIntro) {
+        setTimeout(() => {
+          (<HTMLElement>this._target.querySelector('.introts-tooltip'))
+            .scrollIntoView({block: 'center', behavior: "auto"});
+        }, 310);
+      } else if (element.dataset.scrollTo) {
         const block = <HTMLElement>this._target.querySelector(element.dataset.scrollTo)
-        if(block) block.scrollIntoView({block: "center", behavior: "auto"});
+        if(block) block.scrollIntoView({block: 'center', behavior: "auto"});
       } else {
-        element.scrollIntoView({block: "center", behavior: "auto"});
+        element.scrollIntoView({block: 'center', behavior: "auto"});
       }
     }
 

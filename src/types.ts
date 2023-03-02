@@ -41,6 +41,8 @@ export type Options = {
   showProgress: boolean,
   /** Scroll to highlighted element? */
   scrollToElement: boolean,
+  /** Scroll to intro element? */
+  scrollToIntro: boolean,
 
   /** Set the overlay opacity */
   overlayOpacity: number,
