@@ -1,6 +1,6 @@
 {
   "name": "intro-ts",
-  "version": "1.3.29",
+  "version": "1.3.42",
   "description": "Better introductions for websites and features with a step-by-step guide for your projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
