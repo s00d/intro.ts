@@ -33,7 +33,7 @@ export function mergeOptions(oldOptions: Options|null = null, newOptions: Option
   }
   for (let i in newOptions) {
     // @ts-ignore
-    oldOptions[i] = newOptions
+    oldOptions[i] = newOptions[i]
   }
   return oldOptions;
 }
