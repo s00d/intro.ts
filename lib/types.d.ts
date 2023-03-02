@@ -1,6 +1,6 @@
 import Hints from "./Hints";
 import IntroTS from "./Intro";
-export declare type Options = {
+export type Options = {
     steps: Array<number>;
     /** Next button label in tooltip box */
     nextLabel: string;
@@ -36,6 +36,8 @@ export declare type Options = {
     showProgress: boolean;
     /** Scroll to highlighted element? */
     scrollToElement: boolean;
+    /** Scroll to intro element? */
+    scrollToIntro: boolean;
     /** Set the overlay opacity */
     overlayOpacity: number;
     /** Precedence of positions, when auto is enabled */
@@ -50,7 +52,7 @@ export declare type Options = {
         callback: () => void;
     }>;
 };
-export declare type size = {
+export type size = {
     top: number;
     width: number;
     height: number;
